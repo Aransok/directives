@@ -1,0 +1,13 @@
+<h3 appHighlight>Hello , Directives !</h3>
+<p appHighlight>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Magni dicta quis esse non! Quasi reprehenderit pariatur nostrum illo et fugiat corporis error, ratione veniam incidunt temporibus odit dolores at nisi.</p>
+<div appMyRouterLink="/login">Go to Login</div>
+<div appMyRouterLink="/register">Go to Register </div>
+<hr />
+<div>Simple Div 1 </div>
+<button (click)="toggle()">Toggle</button>
+<div *appMyStructural="isShown">Structural directive usage 1 </div>
+<ng-template [appMyStructural]="isShown"
+let-testMe="MyCustomValue">
+    <div>Structural Directive usage 2</div>
+    <div>{{testMe}}</div>
+</ng-template>
