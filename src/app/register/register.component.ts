@@ -14,5 +14,13 @@ export class RegisterComponent {
   constructor(private fb: FormBuilder) {}
   handleSubmit(): void {
     console.log(this.registerForm.value);
+
+  }
+  ngAfterViewInit(): void {
+    if(this.registerForm){
+      this.registerForm.valueChanges.subscribe(value => {
+        console.log(value);
+      });
+    };
   }
 }
