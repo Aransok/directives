@@ -3,6 +3,7 @@ import {
   Input,
   OnChanges,
   OnInit,
+  Optional,
   SimpleChanges,
   TemplateRef,
   ViewContainerRef,
@@ -14,8 +15,9 @@ import {
 })
 export class MyStructuralDirective implements OnChanges {
   @Input() appMyStructural: boolean = true;
+  @Input() myTmpRef: TemplateRef<any> | undefined;
   constructor(
-    private templateRef: TemplateRef<any>,
+    @Optional() private templateRef: TemplateRef<any>,
     private vcRef: ViewContainerRef
   ) {
     console.log(templateRef);
@@ -23,12 +25,13 @@ export class MyStructuralDirective implements OnChanges {
 
   ngOnChanges(changes: SimpleChanges): void {
     console.log('On changes', this.appMyStructural);
+    const template = this.templateRef || this.myTmpRef;
     if (this.appMyStructural) {
       this.vcRef.createEmbeddedView(
-        this.templateRef,
+        template,
         //context
-        {MyCustomValue: 'yeet'}
-              );
+        { MyCustomValue: 'yeet' }
+      );
     } else {
       this.vcRef.clear();
     }

@@ -11,3 +11,7 @@ let-testMe="MyCustomValue">
     <div>Structural Directive usage 2</div>
     <div>{{testMe}}</div>
 </ng-template>
+<ng-template #tmp>
+    <div>Structural directive 3</div>
+</ng-template>
+<ng-container [appMyStructural]="isShown" [myTmpRef]="tmp"/>
